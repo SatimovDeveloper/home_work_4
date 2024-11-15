@@ -120,4 +120,8 @@ class Data {
   static List getItem(int id){
     return dataList.where((item)=>item["id"] == id).toList();
   }
+
+  static List getQueryList(String query){
+    return dataList.where((item)=>item["name"].toString().toLowerCase().startsWith(query.toLowerCase())).toList();
+  }
 }

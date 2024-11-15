@@ -14,10 +14,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final searchController = TextEditingController();
   int selectedIndex = 0;
+  List displayList = [];
 
   void onClickCategory(int index) {
     setState(() {
       selectedIndex = index;
+    });
+  }
+
+  void updateList(String value) {
+    setState(() {
+      displayList = Data.getQueryList(value);
     });
   }
 
@@ -49,6 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: TextField(
               controller: searchController,
+              onChanged: (value) {
+                updateList(value);
+              },
               decoration: const InputDecoration(
                   suffixIcon: Icon(
                     Icons.search,
@@ -132,9 +142,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: (){
-                            var data = Data.getItem(Data.getFamousItems()[index]["id"]);
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DetailScreen(data: data,)));
+                          onTap: () {
+                            var data = Data.getItem(
+                                Data.getFamousItems()[index]["id"]);
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => DetailScreen(
+                                      data: data,
+                                    )));
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -169,7 +183,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -177,7 +192,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 8),
                                           child: Text(
-                                            Data.getFamousItems()[index]["name"],
+                                            Data.getFamousItems()[index]
+                                                ["name"],
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 12,
@@ -212,113 +228,238 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 32,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Text(
-                    Data.getCategories()[selectedIndex],
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                ListView.separated(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: (){
-                          var data = Data.getItem(Data.getCategoryList(
-                              Data.getCategories()[selectedIndex])[
-                          index]["id"]);
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DetailScreen(data: data,)));
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          height: 200,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  Data.getCategoryList(
-                                          Data.getCategories()[selectedIndex])[
-                                      index]["image"],
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.circular(16)),
-                          child: Stack(
-                            alignment: Alignment.bottomLeft,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                height: double.infinity,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      colors: [Colors.black, Colors.transparent],
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                      stops: [0.0, 0.3]),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                                child: Row(
-                                  children: [
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
+                searchController.text.isEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Text(
+                          Data.getCategories()[selectedIndex],
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      )
+                    : Container(),
+                searchController.text.isEmpty
+                    ? const SizedBox(
+                        height: 16,
+                      )
+                    : Container(),
+                searchController.text.isEmpty
+                    ? ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              var data = Data.getItem(Data.getCategoryList(
+                                      Data.getCategories()[selectedIndex])[
+                                  index]["id"]);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => DetailScreen(
+                                        data: data,
+                                      )));
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      Data.getCategoryList(Data.getCategories()[
+                                          selectedIndex])[index]["image"],
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16)),
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            Colors.black,
+                                            Colors.transparent
+                                          ],
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          stops: [0.0, 0.3]),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 12),
+                                    child: Row(
                                       children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              Data.getCategoryList(
+                                                      Data.getCategories()[
+                                                          selectedIndex])[index]
+                                                  ["name"],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Text(
+                                              Data.getCategoryList(
+                                                      Data.getCategories()[
+                                                          selectedIndex])[index]
+                                                  ["location"],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w300),
+                                            )
+                                          ],
+                                        ),
+                                        Spacer(),
                                         Text(
-                                          Data.getCategoryList(Data.getCategories()[
-                                              selectedIndex])[index]["name"],
+                                          Data.getCategoryList(
+                                                  Data.getCategories()[
+                                                      selectedIndex])[index]
+                                              ["score"],
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 12,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w500),
                                         ),
-                                        Text(
-                                          Data.getCategoryList(Data.getCategories()[
-                                          selectedIndex])[index]["location"],
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w300),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                          size: 24,
                                         )
                                       ],
                                     ),
-                                    Spacer(),
-                                    Text(
-                                      Data.getCategoryList(Data.getCategories()[
-                                      selectedIndex])[index]["score"],
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (contex, index) {
+                          return const SizedBox(
+                            height: 16,
+                          );
+                        },
+                        itemCount: Data.getCategoryList(
+                                Data.getCategories()[selectedIndex])
+                            .length)
+                    : ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              var data = Data.getItem(Data.getCategoryList(
+                                      Data.getCategories()[selectedIndex])[
+                                  index]["id"]);
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => DetailScreen(
+                                        data: data,
+                                      )));
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                     displayList[index]["image"],
                                     ),
-                                    SizedBox(width: 8,),
-                                    Icon(Icons.star, color: Colors.amber,size: 24,)
-
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (contex, index) {
-                      return const SizedBox(
-                        height: 16,
-                      );
-                    },
-                    itemCount: Data.getCategoryList(
-                            Data.getCategories()[selectedIndex])
-                        .length)
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(16)),
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            Colors.black,
+                                            Colors.transparent
+                                          ],
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          stops: [0.0, 0.3]),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12, vertical: 12),
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              displayList[index]["name"],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Text(
+                                              displayList[index]["location"],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w300),
+                                            )
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        Text(
+                                          displayList[index]["score"],
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
+                                          size: 24,
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (contex, index) {
+                          return const SizedBox(
+                            height: 16,
+                          );
+                        },
+                        itemCount: displayList.length)
               ],
             ),
           )
