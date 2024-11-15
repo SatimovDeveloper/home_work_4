@@ -59,6 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
               onChanged: (value) {
                 updateList(value);
               },
+              style:TextStyle(
+                color: Color(0xffa5a5a5),
+              fontSize: 16,
+              fontWeight: FontWeight.w500),
               decoration: const InputDecoration(
                   suffixIcon: Icon(
                     Icons.search,
