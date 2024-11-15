@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home_work_4/config/colors.dart';
 import 'package:home_work_4/config/strings.dart';
 import 'package:home_work_4/data/data.dart';
+import 'package:home_work_4/detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -130,67 +131,73 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Card(
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide.none,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Container(
-                            width: 120,
-                            height: 180,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      Data.getFamousItems()[index]["image"]),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Stack(
-                              alignment: Alignment.bottomLeft,
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          Colors.black.withOpacity(.7),
-                                          Colors.transparent
-                                        ],
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
-                                        stops: [0.0, 0.4]),
+                        return GestureDetector(
+                          onTap: (){
+                            var data = Data.getItem(Data.getFamousItems()[index]["id"]);
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DetailScreen(data: data,)));
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Container(
+                              width: 120,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        Data.getFamousItems()[index]["image"]),
+                                    fit: BoxFit.cover),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            Colors.black.withOpacity(.7),
+                                            Colors.transparent
+                                          ],
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          stops: [0.0, 0.4]),
+                                    ),
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8),
-                                        child: Text(
-                                          Data.getFamousItems()[index]["name"],
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500),
-                                        )),
-                                    Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 8, bottom: 8),
-                                        child: Text(
-                                          Data.getFamousItems()[index]
-                                              ["location"],
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w300),
-                                        ))
-                                  ],
-                                )
-                              ],
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            Data.getFamousItems()[index]["name"],
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w500),
+                                          )),
+                                      Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, bottom: 8),
+                                          child: Text(
+                                            Data.getFamousItems()[index]
+                                                ["location"],
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w300),
+                                          ))
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         );
@@ -223,76 +230,84 @@ class _HomeScreenState extends State<HomeScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: double.infinity,
-                        height: 200,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                Data.getCategoryList(
-                                        Data.getCategories()[selectedIndex])[
-                                    index]["image"],
+                      return GestureDetector(
+                        onTap: (){
+                          var data = Data.getItem(Data.getCategoryList(
+                              Data.getCategories()[selectedIndex])[
+                          index]["id"]);
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DetailScreen(data: data,)));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 200,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  Data.getCategoryList(
+                                          Data.getCategories()[selectedIndex])[
+                                      index]["image"],
+                                ),
+                                fit: BoxFit.cover,
                               ),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Stack(
-                          alignment: Alignment.bottomLeft,
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [Colors.black, Colors.transparent],
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    stops: [0.0, 0.3]),
+                              borderRadius: BorderRadius.circular(16)),
+                          child: Stack(
+                            alignment: Alignment.bottomLeft,
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      colors: [Colors.black, Colors.transparent],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      stops: [0.0, 0.3]),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        Data.getCategoryList(Data.getCategories()[
-                                            selectedIndex])[index]["name"],
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Text(
-                                        Data.getCategoryList(Data.getCategories()[
-                                        selectedIndex])[index]["location"],
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w300),
-                                      )
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    Data.getCategoryList(Data.getCategories()[
-                                    selectedIndex])[index]["score"],
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  SizedBox(width: 8,),
-                                  Icon(Icons.star, color: Colors.amber,size: 24,)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          Data.getCategoryList(Data.getCategories()[
+                                              selectedIndex])[index]["name"],
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          Data.getCategoryList(Data.getCategories()[
+                                          selectedIndex])[index]["location"],
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w300),
+                                        )
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    Text(
+                                      Data.getCategoryList(Data.getCategories()[
+                                      selectedIndex])[index]["score"],
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    SizedBox(width: 8,),
+                                    Icon(Icons.star, color: Colors.amber,size: 24,)
 
-                                ],
-                              ),
-                            )
-                          ],
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },

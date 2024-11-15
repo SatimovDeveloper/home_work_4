@@ -3,47 +3,40 @@ class Data {
 
   static List dataList = [
     {
+      "id":1,
       "name": "Orol dengizi",
       "image": "assets/images/img_orol.png",
       "location": "Qoraqalog‘iston",
       "category": "Suv",
       "description":
-          """Orol dengizi – Oʻrta Osiyodagi eng katta berk koʻl. Maʼmuriy jihatdan Orol dengizining 
-          yarmidan koʻproq janubi-gʻarbiy qismi Oʻzbekiston, shimoli-sharqiy qismi Qozogʻiston hududida 
-          joylashgan. Oʻtgan asrning 60-yillarigacha Orol dengizi maydoni orollari bilan oʻrtacha 
-          68,0 ming km² ni tashkil etgan. Kattaligi jihatidan dunyoda toʻrtinchi (Kaspiy dengizi,
-           Amerikadagi Yuqori koʻl va Afrikadagi Viktoriya koʻlidan keyin), Yevrosiyo materigida 
-           (Kaspiydan keyin) ikkinchi oʻrinda edi. Dengiz shimoli-sharqdan janubi-gʻarbga choʻzilgan,
-            uz. 428 km, eng keng joyi 235 km (45° shahrik.) boʻlgan. Havzasining maydoni 690 ming km²,
-             suvining hajmi 1000 km³, oʻrtacha chuq. 16,5 m atrofida oʻzgarib turgan. """,
+          """Orol dengizi – Oʻrta Osiyodagi eng katta berk koʻl. Maʼmuriy jihatdan Orol dengizining yarmidan koʻproq janubi-gʻarbiy qismi Oʻzbekiston, shimoli-sharqiy qismi Qozogʻiston hududida joylashgan. Oʻtgan asrning 60-yillarigacha Orol dengizi maydoni orollari bilan oʻrtacha 68,0 ming km² ni tashkil etgan. Kattaligi jihatidan dunyoda toʻrtinchi (Kaspiy dengizi, Amerikadagi Yuqori koʻl va Afrikadagi Viktoriya koʻlidan keyin), Yevrosiyo materigida (Kaspiydan keyin) ikkinchi oʻrinda edi. Dengiz shimoli-sharqdan janubi-gʻarbga choʻzilgan, uz. 428 km, eng keng joyi 235 km (45° shahrik.) boʻlgan. Havzasining maydoni 690 ming km², suvining hajmi 1000 km³, oʻrtacha chuq. 16,5 m atrofida oʻzgarib turgan. """,
       "score": "4.7",
       "isFamous": true
     },
     {
+      "id":2,
       "name": "Zomin",
       "image": "assets/images/img_zomin.png",
       "location": "Jizzax",
       "category": "Sanatoriya",
       "description":
-          """Zomin milliy bog‘ida, dengiz sathidan 2 ming metr balandlikda "Zomin" davolash-sog‘lomlashtirish
-       sanatoriysi joylashgan.O‘ta toza havo, tog‘ manzaralari, ignabargli o‘simliklar - bularning barchasi
-        kattalar va bolalarga sog‘lom turmush tarzi uchun eng yaxshi sharoitlarni yaratadi.Sanatoriyda zamonaviy 
-        tibbiyot uskunalari mavjud, shuningdek diagnostika, EKG, ultratovush va stomatologiya bo‘limlari ishlab 
-        turibdi. Tashxisdan keyin mehmonlarga zarur terapiya va tegishli davolash protseduralari tayinlanadi.""",
+          """Zomin milliy bog‘ida, dengiz sathidan 2 ming metr balandlikda "Zomin" davolash-sog‘lomlashtirish sanatoriysi joylashgan.O‘ta toza havo, tog‘ manzaralari, ignabargli o‘simliklar - bularning barchasi kattalar va bolalarga sog‘lom turmush tarzi uchun eng yaxshi sharoitlarni yaratadi.Sanatoriyda zamonaviy tibbiyot uskunalari mavjud, shuningdek diagnostika, EKG, ultratovush va stomatologiya bo‘limlari ishlab turibdi. Tashxisdan keyin mehmonlarga zarur terapiya va tegishli davolash protseduralari tayinlanadi.""",
       "score": "5",
       "isFamous": false
     },
     {
+      "id":3,
       "name": "Zomin tog‘lari",
       "image": "assets/images/img_zomin_toglari.png",
       "location": "Jizzax",
       "category": "Tog‘",
       "description":
-          """Hudud ikki qismdan tarkib topgan: Turkiston tog`larining shimoliy tizmalarida joylashgan, bir-biri bilan chegaradosh Zomin Davlat qo`riqxonasi va Zomin Xalq bog`i. Zomin Davlat qo`riqxonasi Zomin va Baxmal tumanlari hududida, 26840 ga maydonga ega bo`lib, 1960 yil tashkil qilingan. Zomin Xalq bog`i 1978 yil tashkil qilingan, Jizzax viloyatining Zomin tumanida 24110 ga maydonni tashkil qiladi. Qo`riqxona o`z hududidagi barcha tabiiy resurslarni muhofaza qilish va daxlsizligini ta’minlaydi. Xalq Bog`i noyob tog` ekotizimlarni saqlash, tiklash va rekreatsion tadqiq qilish maqsadida tashkil etilgan. Qarag`ay o`rmonlari hududdagi eng yirik o`rmonlardan hisoblanadi. O`zbekiston Qizil kitobiga kiritilgan noyob hayvonot turlari (14 ta) va o`simliklari (18 ta) mavjud. Hudud 1913 yildan buyon turli darajada muhofaza ostiga olingani sabab, noyob tabiiy resurslar saqlanib qolgan.""",
+          """Hudud ikki qismdan tarkib topgan: Turkiston tog`larining shimoliy tizmalarida joylashgan, bir-biri bilan chegaradosh Zomin Davlat qo`riqxonasi va Zomin Xalq bog`i. Zomin Davlat qo`riqxonasi Zomin va Baxmal tumanlari hududida, 26840 ga maydonga ega bo`lib, 1960 yil tashkil qilingan. Zomin Xalq bog`i 1978 yil tashkil qilingan, Jizzax viloyatining Zomin tumanida 24110 ga maydonni tashkil qiladi. Qo`riqxona o`z hududidagi barcha tabiiy resurslarni muhofaza qilish va daxlsizligini ta’minlaydi. Xalq Bog`i noyob tog` ekotizimlarni saqlash, tiklash va rekreatsion tadqiq qilish maqsadida tashkil etilgan. Qarag`ay o`rmonlari hududdagi eng yirik o`rmonlardan hisoblanadi. O`zbekiston Qizil kitobiga kiritilgan noyob hayvonot turlari (14 ta) va o`simliklari (18 ta) mavjud. Hudud 1913 yildan buyon turli darajada muhofaza ostiga olingani sabab, noyob tabiiy resurslar saqlanib qolgan.Hudud ikki qismdan tarkib topgan: Turkiston tog`larining shimoliy tizmalarida joylashgan, bir-biri bilan chegaradosh Zomin Davlat qo`riqxonasi va Zomin Xalq bog`i. Zomin Davlat qo`riqxonasi Zomin va Baxmal tumanlari hududida, 26840 ga maydonga ega bo`lib, 1960 yil tashkil qilingan. Zomin Xalq bog`i 1978 yil tashkil qilingan, Jizzax viloyatining Zomin tumanida 24110 ga maydonni tashkil qiladi. Qo`riqxona o`z hududidagi barcha tabiiy resurslarni muhofaza qilish va daxlsizligini ta’minlaydi. Xalq Bog`i noyob tog` ekotizimlarni saqlash, tiklash va rekreatsion tadqiq qilish maqsadida tashkil etilgan. Qarag`ay o`rmonlari hududdagi eng yirik o`rmonlardan hisoblanadi. O`zbekiston Qizil kitobiga kiritilgan noyob hayvonot turlari (14 ta) va o`simliklari (18 ta) mavjud. Hudud 1913 yildan buyon turli darajada muhofaza ostiga olingani sabab, noyob tabiiy resurslar saqlanib qolgan.Hudud ikki qismdan tarkib topgan: Turkiston tog`larining shimoliy tizmalarida joylashgan, bir-biri bilan chegaradosh Zomin Davlat qo`riqxonasi va Zomin Xalq bog`i. Zomin Davlat qo`riqxonasi Zomin va Baxmal tumanlari hududida, 26840 ga maydonga ega bo`lib, 1960 yil tashkil qilingan. Zomin Xalq bog`i 1978 yil tashkil qilingan, Jizzax viloyatining Zomin tumanida 24110 ga maydonni tashkil qiladi. Qo`riqxona o`z hududidagi barcha tabiiy resurslarni muhofaza qilish va daxlsizligini ta’minlaydi. Xalq Bog`i noyob tog` ekotizimlarni saqlash, tiklash va rekreatsion tadqiq qilish maqsadida tashkil etilgan. Qarag`ay o`rmonlari hududdagi eng yirik o`rmonlardan hisoblanadi. O`zbekiston Qizil kitobiga kiritilgan noyob hayvonot turlari (14 ta) va o`simliklari (18 ta) mavjud. Hudud 1913 yildan buyon turli darajada muhofaza ostiga olingani sabab, noyob tabiiy resurslar saqlanib qolgan.Hudud ikki qismdan tarkib topgan: Turkiston tog`larining shimoliy tizmalarida joylashgan, bir-biri bilan chegaradosh Zomin Davlat qo`riqxonasi va Zomin Xalq bog`i. Zomin Davlat qo`riqxonasi Zomin va Baxmal tumanlari hududida, 26840 ga maydonga ega bo`lib, 1960 yil tashkil qilingan. Zomin Xalq bog`i 1978 yil tashkil qilingan, Jizzax viloyatining Zomin tumanida 24110 ga maydonni tashkil qiladi. Qo`riqxona o`z hududidagi barcha tabiiy resurslarni muhofaza qilish va daxlsizligini ta’minlaydi. Xalq Bog`i noyob tog` ekotizimlarni saqlash, tiklash va rekreatsion tadqiq qilish maqsadida tashkil etilgan. Qarag`ay o`rmonlari hududdagi eng yirik o`rmonlardan hisoblanadi. O`zbekiston Qizil kitobiga kiritilgan noyob hayvonot turlari (14 ta) va o`simliklari (18 ta) mavjud. Hudud 1913 yildan buyon turli darajada muhofaza ostiga olingani sabab, noyob tabiiy resurslar saqlanib qolgan.""",
       "score": "4.5",
       "isFamous": true
     },
     {
+      "id":4,
       "name": "Xiva shahri",
       "image": "assets/images/img_xiva.png",
       "location": "Xorazm",
@@ -54,6 +47,7 @@ class Data {
       "isFamous": true
     },
     {
+      "id":5,
       "name": "Samarqand shahri",
       "image": "assets/images/img_samarqand.png",
       "location": "Samarqand",
@@ -64,6 +58,7 @@ class Data {
       "isFamous": true
     },
     {
+      "id":6,
       "name": "Buxoro shahri",
       "image": "assets/images/img_buxoro.png",
       "location": "Buxoro",
@@ -74,6 +69,7 @@ class Data {
       "isFamous": true
     },
     {
+      "id":7,
       "name": "Humson sanatoriyasi",
       "image": "assets/images/img_humson.png",
       "location": "Toshkent viloyati",
@@ -84,6 +80,7 @@ class Data {
       "isFamous": false
     },
     {
+      "id":8,
       "name": "Charvoq suv ombori",
       "image": "assets/images/img_charvoq.png",
       "location": "Toshkent viloyati",
@@ -94,6 +91,7 @@ class Data {
       "isFamous": false
     },
     {
+      "id":9,
       "name": "Oqtosh tog‘lari",
       "image": "assets/images/img_oqtosh.png",
       "location": "Toshkent viloyati",
@@ -117,5 +115,9 @@ class Data {
 
   static List getCategoryList(String category){
     return category == "Barchasi" ? dataList : dataList.where((item)=>item["category"]==category).toList();
+  }
+
+  static List getItem(int id){
+    return dataList.where((item)=>item["id"] == id).toList();
   }
 }

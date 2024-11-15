@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="home_work_4"
+        android:label="sayohat"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
